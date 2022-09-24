@@ -4,9 +4,9 @@ pcall(function()
 	local gui_hide_button = {Enum.KeyCode.LeftControl, ""}
 	local plrs = game:GetService("Players")
 	local lplr = game:GetService("Players").LocalPlayer
-	local TeamBased = true ; local teambasedswitch = "y"
-	local presskeytoaim = true; local aimkey = getgenv().FPSGui.LockKeybind
-	aimbothider = false; aimbothiderspeed = getgenv().FPSGui.Speed
+	local TeamBased = false ; local teambasedswitch = "y"
+	local presskeytoaim = true; local aimkey = "c"
+	aimbothider = true; aimbothiderspeed = getgenv().FPSGui.Speed
 	local Aim_Assist = false ; Aim_Assist_Key = {Enum.KeyCode.LeftControl, "x"}
 	local espupdatetime = 5; autoesp = false; local charmsesp = true
 	local movementcounting = true
@@ -31,6 +31,7 @@ pcall(function()
 	local abs = math.abs
 	
 	local Gui = Instance.new("ScreenGui")
+	Gui.Enabled = false
 	local Move = Instance.new("Frame")
 	local Main = Instance.new("Frame")
 	local EspStatus = Instance.new("TextLabel")
@@ -528,7 +529,7 @@ pcall(function()
 				end
 				Gui.Enabled = false
 			else
-				Gui.Enabled = true
+				Gui.Enabled = false
 				hided2 = false
 			end
 				
@@ -787,7 +788,7 @@ pcall(function()
 				if aimatpart.Parent == plrs.LocalPlayer.Character then
 					aimatpart = nil
 				end
-				aimat(aimatpart)
+				aimat(getgenv().globalPart)
 				pcall(function()
 					if Aim_Assist == true then
 						local cf1 = CFrame.new(cam.CFrame.p, aimatpart.CFrame.p) * CFrame.new(0, 0, -4)
