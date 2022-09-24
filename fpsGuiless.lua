@@ -8,7 +8,7 @@ pcall(function()
 	local presskeytoaim = true; local aimkey = "c"
 	aimbothider = true; aimbothiderspeed = getgenv().FPSGui.Speed
 	local Aim_Assist = false ; Aim_Assist_Key = {Enum.KeyCode.LeftControl, "x"}
-	local espupdatetime = 5; autoesp = false; local charmsesp = true
+	local espupdatetime = 5; autoesp = false; local charmsesp = false
 	local movementcounting = true
 	
 	
