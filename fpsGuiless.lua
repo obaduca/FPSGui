@@ -618,25 +618,13 @@ pcall(function()
 				local maxangle = math.rad(20)
 				for i, plr in pairs(plrs:GetChildren()) do
 					if plr.Name ~= lplr.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
-						if TeamBased == true then
-							if plr.Team.Name ~= lplr.Team.Name then
-								local an = checkfov(plr.Character.HumanoidRootPart)
-								if an < maxangle then
-									maxangle = an
-									aimatpart = plr.Character.HumanoidRootPart
-								end
-							end
-						else
-							local an = checkfov(plr.Character.HumanoidRootPart)
-								if an < maxangle then
-									maxangle = an
-									aimatpart = plr.Character.HumanoidRootPart
-								end
-								--print(plr)
+						local an = checkfov(plr.Character.HumanoidRootPart)
+						if an < maxangle then
+							maxangle = an
+							aimatpart = plr.Character.HumanoidRootPart
 						end
 						local old = aimatpart
 						plr.Character.Humanoid.Died:Connect(function()
-							--print("died")
 							if aimatpart and aimatpart == old then
 								aimatpart = nil
 							end
