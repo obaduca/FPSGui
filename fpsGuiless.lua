@@ -104,13 +104,13 @@
             else 
                 CanNotify = false 
             end
-        elseif getgenv().ThirdPerson == true and getgenv().SmoothCamlock.FirstPerson == false then 
+        elseif getgenv().SmoothCamlock.ThirdPerson == true and getgenv().SmoothCamlock.FirstPerson == false then 
             if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 then 
                 CanNotify = true 
             else 
                 CanNotify = false 
             end
-        elseif getgenv().ThirdPerson == false and getgenv().SmoothCamlock.FirstPerson == true then 
+        elseif getgenv().SmoothCamlock.ThirdPerson == false and getgenv().SmoothCamlock.FirstPerson == true then 
             if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
                 CanNotify = true 
             else 
