@@ -32,12 +32,12 @@
                         if getgenv().SmoothCamlock.PredictMovement == true then
                             if getgenv().SmoothCamlock.Smoothness == true then
                                 --// The part we're going to lerp/smoothen \\--
-                                local Main = CF(Camera.CFrame.p, getgenv().globalPart.Position + getgenv().globalPart.Velocity/getgenv().SmoothCamlock.PredictMovement)
+                                local Main = CF(Camera.CFrame.p, getgenv().globalPart.Position + getgenv().globalPart.Velocity/getgenv().SmoothCamlock.PredictionVelocity)
                                 
                                 --// Making it work \\--
                                 Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothCamlock.SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
                             else
-                                Camera.CFrame = CF(Camera.CFrame.p, getgenv().globalPart.Position + getgenv().globalPart.Velocity/getgenv().SmoothCamlock.PredictMovement)
+                                Camera.CFrame = CF(Camera.CFrame.p, getgenv().globalPart.Position + getgenv().globalPart.Velocity/getgenv().SmoothCamlock.PredictionVelocity)
                             end
                         elseif getgenv().SmoothCamlock.PredictMovement == false then 
                             if getgenv().SmoothCamlock.Smoothness == true then
