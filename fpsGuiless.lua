@@ -449,23 +449,7 @@ pcall(function()
 			ballisticsboost = 0
 		elseif a == aimkey then
 			if not aimatpart then
-				local maxangle = math.rad(20)
-				for i, plr in pairs(plrs:GetChildren()) do
-					if plr.Name ~= lplr.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
-						local an = checkfov(plr.Character.HumanoidRootPart)
-						if an < maxangle then
-							maxangle = an
-							aimatpart = plr.Character.HumanoidRootPart
-						end
-						local old = aimatpart
-						plr.Character.Humanoid.Died:Connect(function()
-							if aimatpart and aimatpart == old then
-								aimatpart = nil
-							end
-						end)
-						
-					end
-				end
+				aimatpart = getgenv().globalPart
 			else
 				aimatpart = nil
 				canaimat = false
