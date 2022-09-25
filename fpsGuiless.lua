@@ -517,7 +517,7 @@ pcall(function()
 	local downing = false
 	mouse.KeyDown:Connect(function(a)
 		
-		if a == "t" then
+		if a == " " then
 			--print("worked1")
 			f.addesp()
 		elseif a == gui_hide_button[2] and uis:IsKeyDown(gui_hide_button[1]) then
@@ -533,7 +533,7 @@ pcall(function()
 				hided2 = false
 			end
 				
-		elseif a == "y" then
+		elseif a == "" then
 			if aimbothider == false then
 				aimbothider = true
 				if aimbothider == true then
