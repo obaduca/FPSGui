@@ -5,7 +5,7 @@
     local AimlockTarget;
     local OldPre;
     
-    
+    printconsole("god")
     RService.RenderStepped:Connect(function()
         if getgenv().SmoothCamlock.ThirdPerson == true and getgenv().SmoothCamlock.FirstPerson == true then 
             if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 or (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
