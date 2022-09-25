@@ -37,7 +37,7 @@
         for i, v in pairs(players) do
             if v.Character ~= nil then
                 local AIM = v.Character:FindFirstChild("Head")
-                if getgenv().TeamCheck == true and v.Team ~= Client.Team then
+                if getgenv().SmoothCamlock.TeamCheck == true and v.Team ~= Client.Team then
                     local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
                     local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
                     local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
@@ -47,7 +47,7 @@
                     PLAYER_HOLD[v.Name .. i].plr = v
                     PLAYER_HOLD[v.Name .. i].diff = DIFF
                     table.insert(DISTANCES, DIFF)
-                elseif getgenv().TeamCheck == false and v.Team == Client.Team then 
+                elseif getgenv().SmoothCamlock.TeamCheck == false and v.Team == Client.Team then 
                     local DISTANCE = (v.Character:FindFirstChild("Head").Position - game.Workspace.CurrentCamera.CFrame.p).magnitude
                     local RAY = Ray.new(game.Workspace.CurrentCamera.CFrame.p, (Mouse.Hit.p - game.Workspace.CurrentCamera.CFrame.p).unit * DISTANCE)
                     local HIT,POS = game.Workspace:FindPartOnRay(RAY, game.Workspace)
@@ -98,19 +98,19 @@
     end)
     
     RService.RenderStepped:Connect(function()
-        if getgenv().ThirdPerson == true and getgenv().FirstPerson == true then 
+        if getgenv().SmoothCamlock.ThirdPerson == true and getgenv().SmoothCamlock.FirstPerson == true then 
             if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 or (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
                 CanNotify = true 
             else 
                 CanNotify = false 
             end
-        elseif getgenv().ThirdPerson == true and getgenv().FirstPerson == false then 
+        elseif getgenv().ThirdPerson == true and getgenv().SmoothCamlock.FirstPerson == false then 
             if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 then 
                 CanNotify = true 
             else 
                 CanNotify = false 
             end
-        elseif getgenv().ThirdPerson == false and getgenv().FirstPerson == true then 
+        elseif getgenv().ThirdPerson == false and getgenv().SmoothCamlock.FirstPerson == true then 
             if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
                 CanNotify = true 
             else 
@@ -119,25 +119,25 @@
         end
         if Aimlock == true and MousePressed == true then 
             if AimlockTarget and AimlockTarget.Character and AimlockTarget.Character:FindFirstChild(getgenv().globalPart) then 
-                if getgenv().FirstPerson == true then
+                if getgenv().SmoothCamlock.FirstPerson == true then
                     if CanNotify == true then
-                        if getgenv().PredictMovement == true then
-                            if getgenv().Smoothness == true then
+                        if getgenv().SmoothCamlock.PredictMovement == true then
+                            if getgenv().SmoothCamlock.Smoothness == true then
                                 --// The part we're going to lerp/smoothen \\--
-                                local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position + AimlockTarget.Character[getgenv().globalPart].Velocity/PredictionVelocity)
+                                local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position + AimlockTarget.Character[getgenv().globalPart].Velocity/getgenv().SmoothCamlock.PredictMovement)
                                 
                                 --// Making it work \\--
-                                Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
+                                Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothCamlock.SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
                             else
-                                Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position + AimlockTarget.Character[getgenv().globalPart].Velocity/PredictionVelocity)
+                                Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position + AimlockTarget.Character[getgenv().globalPart].Velocity/getgenv().SmoothCamlock.PredictMovement)
                             end
-                        elseif getgenv().PredictMovement == false then 
-                            if getgenv().Smoothness == true then
+                        elseif getgenv().SmoothCamlock.PredictMovement == false then 
+                            if getgenv().SmoothCamlock.Smoothness == true then
                                 --// The part we're going to lerp/smoothen \\--
                                 local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position)
 
                                 --// Making it work \\--
-                                Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
+                                Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothCamlock.SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
                             else
                                 Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position)
                             end
@@ -146,13 +146,4 @@
                 end
             end
         end
-         if CheckIfJumped == true then
-       if AimlockTarget.Character.HuDDDDDDDDDDWmanoid.FloorMaterial == Enum.Material.Air then
-    
-           getgenv().globalPart = "UpperTorso"
-       else
-         getgenv().globalPart = getgenv().globalPart
-
-       end
-    end
 end)
