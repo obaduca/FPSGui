@@ -517,59 +517,7 @@ pcall(function()
 	local downing = false
 	mouse.KeyDown:Connect(function(a)
 		
-		if a == " " then
-			--print("worked1")
-			f.addesp()
-		elseif a == gui_hide_button[2] and uis:IsKeyDown(gui_hide_button[1]) then
-			if hided2 == false then
-				hided2 = true
-				autoesp =false
-				if espforlder then
-					espforlder:Destroy()
-				end
-				Gui.Enabled = false
-			else
-				Gui.Enabled = false
-				hided2 = false
-			end
-				
-		elseif a == "" then
-			if aimbothider == false then
-				aimbothider = true
-				if aimbothider == true then
-				aimbothiderbox.Text = "Speed :"..tostring(aimbothiderspeed).." on"
-			else
-				aimbothiderbox.Text = "Speed :"..tostring(aimbothiderspeed).." off"
-			end
-			else
-				
-				aimbothider = false
-				if aimbothider == true then
-				aimbothiderbox.Text = "Speed :"..tostring(aimbothiderspeed).." on"
-			else
-				aimbothiderbox.Text = "Speed :"..tostring(aimbothiderspeed).." off"
-			end
-			end
-			if aimbothider == true then
-				aimbothiderbox.TextColor3 =Color3.fromRGB(11, 255, 19)
-			else
-				aimbothiderbox.TextColor3 =Color3.fromRGB(255, 0, 0)
-			end
-		elseif a == "l" then
-			if not uis:IsKeyDown(Enum.KeyCode.LeftControl) then
-				if autoesp == false then
-					autoesp = true
-				else
-					autoesp = false
-				end
-			else
-				if lightesp == true then
-					lightesp = false
-				else
-					lightesp = true
-				end
-			end
-		elseif a == "]" then
+		if a == "]" then
 			upping = true
 			downing = false
 		elseif a== "[" then
