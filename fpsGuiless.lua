@@ -5,7 +5,7 @@
     local AimlockTarget;
     local OldPre;
     
-    printconsole("god")
+    
     RService.RenderStepped:Connect(function()
         if getgenv().SmoothCamlock.ThirdPerson == true and getgenv().SmoothCamlock.FirstPerson == true then 
             if (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude > 1 or (Camera.Focus.p - Camera.CoordinateFrame.p).Magnitude <= 1 then 
@@ -26,29 +26,29 @@
                 CanNotify = false 
             end
         end
-        if Aimlock == true and MousePressed == true then 
+        if getgenv().SmoothCamlock.LoadCamLock == true then 
             if getgenv().globalTarget and getgenv().globalPart then 
                 if getgenv().SmoothCamlock.FirstPerson == true then
                     if CanNotify == true then
                         if getgenv().SmoothCamlock.PredictMovement == true then
                             if getgenv().SmoothCamlock.Smoothness == true then
                                 --// The part we're going to lerp/smoothen \\--
-                                local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position + AimlockTarget.Character[getgenv().globalPart].Velocity/getgenv().SmoothCamlock.PredictMovement)
+                                local Main = CF(Camera.CFrame.p, getgenv().globalTarget.Character[getgenv().globalPart].Position + getgenv().globalTarget.Character[getgenv().globalPart].Velocity/getgenv().SmoothCamlock.PredictMovement)
                                 
                                 --// Making it work \\--
                                 Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothCamlock.SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
                             else
-                                Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position + AimlockTarget.Character[getgenv().globalPart].Velocity/getgenv().SmoothCamlock.PredictMovement)
+                                Camera.CFrame = CF(Camera.CFrame.p, getgenv().globalTarget.Character[getgenv().globalPart].Position + getgenv().globalTarget.Character[getgenv().globalPart].Velocity/getgenv().SmoothCamlock.PredictMovement)
                             end
                         elseif getgenv().SmoothCamlock.PredictMovement == false then 
                             if getgenv().SmoothCamlock.Smoothness == true then
                                 --// The part we're going to lerp/smoothen \\--
-                                local Main = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position)
+                                local Main = CF(Camera.CFrame.p, getgenv().globalTarget.Character[getgenv().globalPart].Position)
 
                                 --// Making it work \\--
                                 Camera.CFrame = Camera.CFrame:Lerp(Main, getgenv().SmoothCamlock.SmoothnessAmount, Enum.EasingStyle.Elastic, Enum.EasingDirection.InOut)
                             else
-                                Camera.CFrame = CF(Camera.CFrame.p, AimlockTarget.Character[getgenv().globalPart].Position)
+                                Camera.CFrame = CF(Camera.CFrame.p, getgenv().globalTarget.Character[getgenv().globalPart].Position)
                             end
                         end
                     end
